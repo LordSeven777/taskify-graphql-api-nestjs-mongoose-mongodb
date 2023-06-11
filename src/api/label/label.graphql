@@ -1,0 +1,34 @@
+type Query {
+  # Gets a users' labels
+  userLabels(userId: String!): [Label!]!
+}
+
+type Mutation {
+  # Adds a new label
+  addLabel(payload: CreateLabelInput): Label!
+
+  # Updates a label
+  updateLabel(id: ID!, payload: UpdateLabelInput): Label!
+
+  # Deletes a label
+  deleteLabel(id: ID!): Label!
+}
+
+type Label {
+  _id: ID!
+  name: String!
+  color: String!
+  user: String!
+}
+
+# Input for the label creation mutation
+input CreateLabelInput {
+  name: String!
+  color: String
+}
+
+# Input for the label update mutation
+input UpdateLabelInput {
+  name: String
+  color: String
+}

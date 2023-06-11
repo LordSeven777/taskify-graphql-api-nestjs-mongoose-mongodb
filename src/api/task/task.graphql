@@ -1,0 +1,49 @@
+type Query {
+  # Gets a user's tasks by date
+  userTasks(userId: ID!, date: String, search: String): [Task!]!
+}
+
+type Mutation {
+  # Adds a task
+  addTask(payload: CreateTaskInput!): Task!
+
+  # Updates a task
+  updateTask(id: ID!, payload: UpdateTaskInput!): Task!
+
+  # Deletes a task
+  deleteTask(id: ID!): Task!
+}
+
+type Task {
+  _id: ID!
+  name: String!
+  description: String
+  checkList: [String!]!
+  startsAt: Date!
+  endsAt: Date!
+  isCompleted: Boolean!
+  labels: [Label!]!
+  user: User!
+}
+
+# Payload for the task creation mutation
+input CreateTaskInput {
+  name: String!
+  description: String
+  checkList: [String!]
+  startsAt: String!
+  endsAt: String!
+  isCompleted: Boolean
+  labels: [String!]
+}
+
+# Payload for the task update mutation
+input UpdateTaskInput {
+  name: String
+  description: String
+  checkList: [String!]
+  startsAt: String
+  endsAt: String
+  isCompleted: Boolean
+  labels: [String!]
+}
