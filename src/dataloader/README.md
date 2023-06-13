@@ -4,4 +4,4 @@ This **dataloader module** is a dedicated module for registering all the dataloa
 
 The dataloader solution that we're using is the `dataloader` npm package.
 
-This dataloader module will import all the GraphQL API modules that uses the dataloader in order to construct the dataloader definitions based on these API modules' services.
+This dataloader module will import all the GraphQL API modules that uses a dataloader for their read operations.

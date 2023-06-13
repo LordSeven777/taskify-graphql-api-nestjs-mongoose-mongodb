@@ -78,7 +78,7 @@ The barrel export pattern is among the best practices in NestJS and we also use 
 
 ## Schematics/Layers/Components
 
-Schematics, Layers and Components have each their own specific definitions but to make things simple, we will refer to these terms as the being same thing since they all share traits of being categories of code that have their own specific responsabilities in the codebase and the application as whole. Some examples of usually used ones are `Module`, `Controller`, `Resolver`, `Service`, `Schema`, `Decorator`, `DTO`, `Validator`, `Guard`, `Types`, `Constants`, `Helpers` and `Utils`.
+Schematics, Layers and Components have each their own specific definitions but to make things simple, we will refer to these terms as the being same thing since they all share traits of being categories of code that have their own specific responsabilities in the codebase and the application as whole. Some examples of usually used ones are `Module`, `Controller`, `Resolver`, `Service`, `Decorator`, `DTO`, `Validator`, `Types`, `Constants`, `Helpers` and `Utils`.
 
 ### Module
 
@@ -96,10 +96,6 @@ A resolver is pretty much the equivalent layer to a controller if you're using G
 
 A service is responsible for encapsulating the actual business logic of the application inside methods especially CRUD operations to the database. Services are then invoked by controllers or resolvers if you're using GraphQL. Database interaction layers such as database drivers or ORMs are generally used within the services. A service may also import and use other services from other modules. Its naming convention is `<filename>.service.ts`. We do not have to necessarily manually create a service since the NestJS CLI already has a built-in command for that.
 
-### Schema
-
-When interacting with a database, some ORM solutions such as Mongoose or TypeORM require us to manually define classes that represent the schema of the database tables' models. Its naming convention is `<filename>.schema.ts`.
-
 ### Decorator
 
 Although NestJS and its ecosystem already provides some already built-in typescript decorators, sometimes we need to create our own custom decorators that fit our need sin some specific use cases. Custom decorators can be class decorators, property decorators or compound decorators. These are generally grouped inside a `decorator`/`decorators` folder and exported using the **_barrel export pattern_**. Its naming convention is `<filename>.decorator.ts`.
@@ -111,10 +107,6 @@ DTOs are classes that design the shape of the payload data that mutations operat
 ### Validator
 
 Validators are custom validation rules that we the `class-validator`'s `Validate` decorator can take as arguments in order to provide custom validation to our DTO's fields. These are generally grouped inside a `validator`/`validators` folder and exported using the **_barrel export pattern_**. Its naming convention is `<filename>.validator.ts`.
-
-### Guard
-
-Guards are classes that are logic responsible for handling the authentication and authorizations of the users that perform the operations. Guards are passed to the NestJS's UseGuard decorator as an argument and are placed at controllers or resolvers level. These are generally grouped inside a `guard` folder and exported using the **_barrel export pattern_**. Its naming convention is `<filename>.guard.ts`.
 
 ### Types
 
