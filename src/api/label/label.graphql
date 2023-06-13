@@ -19,6 +19,8 @@ type Label {
   name: String!
   color: String!
   user: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 # Input for the label creation mutation

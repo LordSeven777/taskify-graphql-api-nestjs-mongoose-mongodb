@@ -4,4 +4,7 @@ type User {
   lastName: String!
   username: String!
   email: String!
+  labels: [Label!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }

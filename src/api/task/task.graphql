@@ -19,11 +19,13 @@ type Task {
   name: String!
   description: String
   checkList: [String!]!
-  startsAt: Date!
-  endsAt: Date!
+  startsAt: DateTime!
+  endsAt: DateTime!
   isCompleted: Boolean!
   labels: [Label!]!
   user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 # Payload for the task creation mutation

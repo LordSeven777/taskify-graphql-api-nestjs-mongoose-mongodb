@@ -25,7 +25,7 @@ export class GqlConfigService implements GqlOptionsFactory {
       },
       resolvers: {
         Void: VoidResolver,
-        Date: DateTimeResolver,
+        DateTime: DateTimeResolver,
       },
     };
   }

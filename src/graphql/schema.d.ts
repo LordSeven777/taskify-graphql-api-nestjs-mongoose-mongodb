@@ -87,6 +87,8 @@ export interface Label {
     name: string;
     color: string;
     user: string;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export interface Task {
@@ -100,6 +102,8 @@ export interface Task {
     isCompleted: boolean;
     labels: Label[];
     user: User;
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export interface User {
@@ -109,6 +113,9 @@ export interface User {
     lastName: string;
     username: string;
     email: string;
+    labels: Label[];
+    createdAt: DateTime;
+    updatedAt: DateTime;
 }
 
 export type Void = any;
