@@ -5,6 +5,7 @@ import { Label, LabelSchema } from './label.schema';
 import { LabelService } from './label.service';
 import { LabelPolicy } from './label.policy';
 import { LabelResolver } from './label.resolver';
+import { LabelDataloader } from './label.loader';
 
 const labelMongooseModule = MongooseModule.forFeature([
   { name: Label.name, schema: LabelSchema },
@@ -12,7 +13,7 @@ const labelMongooseModule = MongooseModule.forFeature([
 
 @Module({
   imports: [labelMongooseModule],
-  exports: [labelMongooseModule, LabelService],
-  providers: [LabelService, LabelPolicy, LabelResolver],
+  exports: [labelMongooseModule, LabelService, LabelDataloader],
+  providers: [LabelService, LabelPolicy, LabelResolver, LabelDataloader],
 })
 export class LabelModule {}
