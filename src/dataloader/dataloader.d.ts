@@ -1,27 +1,28 @@
-import { BatchLoadFn } from 'dataloader';
+import DataLoader, { BatchLoadFn } from 'dataloader';
 
 /**
- * Makes a class implement a `getBatchOne()` batch method
+ * Batch function that return a single batched value per key
  *
  * @param TKey The type of a key item
  * @param TValue The type of a batched return value
  */
-export interface HasBatchedGetOne<TKey = string, TValue = unknown> {
-  /**
-   * Batch function that return a single batched value per key
-   */
-  getBatchOne: BatchLoadFn<TKey, TValue>;
-}
+export type BatchOneFn<TKey = string | number, TValue = unknown> = BatchLoadFn<
+  TKey,
+  TValue
+>;
 
 /**
- * Makes a class implement a `getBatchMany()` batch method
+ * Batch function that return an array of batched values per key
  *
  * @param TKey The type of a key item
  * @param TValue The type of a item inside the batched array return value
  */
-export interface HasBatchedGetMany<TKey = string, TValue = unknown> {
-  /**
-   * Batch function that return an array of batched values per key
-   */
-  getBatchMany: BatchLoadFn<TKey, TValue[]>;
+export type BatchManyFn<TKey = string | number, TValue = unknown> = BatchLoadFn<
+  TKey,
+  TValue[]
+>;
+
+// Must have a `getLoaders()` that return a record of dataloaders
+export interface HasLoaders {
+  getLoaders(): { [string]: DataLoader };
 }
