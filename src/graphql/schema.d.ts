@@ -73,12 +73,14 @@ export interface AuthResult {
     __typename?: 'AuthResult';
     user: User;
     accessToken: string;
+    expiresAt: DateTime;
     refreshToken: string;
 }
 
 export interface AccessToken {
     __typename?: 'AccessToken';
     accessToken: string;
+    expiresAt: DateTime;
 }
 
 export interface Label {

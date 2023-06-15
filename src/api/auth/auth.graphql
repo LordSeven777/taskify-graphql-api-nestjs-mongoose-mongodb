@@ -20,12 +20,15 @@ type Mutation {
 type AuthResult {
   user: User!
   accessToken: String!
+  # Access token expiration date
+  expiresAt: DateTime!
   refreshToken: String!
 }
 
 # Access token object type after token refresh
 type AccessToken {
   accessToken: String!
+  expiresAt: DateTime!
 }
 
 # Input for the user registration mutation

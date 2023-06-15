@@ -14,3 +14,27 @@ export function getDateEdgeTimes(date: string): [string, string] {
   dateTimes[1] = d.toISOString();
   return dateTimes;
 }
+
+/**
+ * Parses a days duration in `<x>d` format and returns its milliseconds value
+ *
+ * @param stringDuration The duration in `<x>d` string format
+ * @return The milliseconds value
+ */
+export function parseDuration(stringDuration: string): number {
+  if (!stringDuration.match(/^\d+[d]$/)) {
+    throw new Error('The duration format is invalid');
+  }
+  const count = parseInt(stringDuration.replace(/\D/, ''));
+  return count * 24 * 60 * 60 * 1000;
+}
+
+/**
+ * Returns the date added from the current date and a given date
+ *
+ * @param duration The duration to add in milliseconds
+ * @returns The projected date
+ */
+export function addDurationFromNow(stringDuration: string): Date {
+  return new Date(Date.now() + parseDuration(stringDuration));
+}

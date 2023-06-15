@@ -8,6 +8,10 @@ import { Model } from 'mongoose';
 import type { TokenType, UserJwtPayload, AuthResult } from './auth';
 import { User } from '../user/user.schema';
 import SignupDTO from './dto/signup.dto';
+import { addDurationFromNow } from 'src/common/utils/date-time.utils';
+
+// Access token duration: 3 days
+export const ACCESS_TOKEN_DURATION = '3d';
 
 @Injectable()
 export class AuthService {
@@ -29,7 +33,7 @@ export class AuthService {
     const secret = this.config.get<string>(secretEnvKey);
     // A refresh token does not have an expiration date whereas an access token does
     const options: JwtSignOptions =
-      tokenType === 'ACCESS' ? { expiresIn: '3d' } : undefined;
+      tokenType === 'ACCESS' ? { expiresIn: ACCESS_TOKEN_DURATION } : undefined;
     return this.jwtService.signAsync(payload, {
       secret,
       ...options,
@@ -61,6 +65,7 @@ export class AuthService {
     return {
       user,
       accessToken,
+      expiresAt: addDurationFromNow(ACCESS_TOKEN_DURATION),
       refreshToken,
     };
   }
@@ -84,6 +89,7 @@ export class AuthService {
     return {
       user,
       accessToken,
+      expiresAt: addDurationFromNow(ACCESS_TOKEN_DURATION),
       refreshToken,
     };
   }

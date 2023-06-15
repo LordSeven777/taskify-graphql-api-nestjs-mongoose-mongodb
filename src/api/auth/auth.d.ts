@@ -12,5 +12,7 @@ export interface UserJwtPayload {
 export interface AuthResult {
   user: UserDocument;
   accessToken: string;
+  // Access token expiration date
+  expiresAt: Date;
   refreshToken: string;
 }
